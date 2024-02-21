@@ -65,3 +65,18 @@ A^B -> różnica symetryczna == (A|B) - (A&B) - > to samo
 C = set("ala ma kota") - > literki nie będą się powtarzać
 set("ala ma kota") == set("ala ma koat") -> ten sam zbiór
 set("ala ma kota") == set("ala ma kota ala ma kota") -> to samo
+
+4. tabliczka mnnożenia
+L = [[i*j for i in range(10)] for j in range(10)]
+
+5. liczenie ile razy wystąpi
+txt = "ala ma kota , ala ma kota"
+//
+set(txt)
+len(set(txt))
+//
+ x = txt.count("a")
+lub
+[txt.count(i) for i in set(txt)]
+lub
+[(i,txt.count(i)) for i in set(txt)]
