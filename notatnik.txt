@@ -1,4 +1,15 @@
-gagjagha
+
 - lista 
 - krotka
 - zbiór
+1.
+lista = []
+lista = list()
+puste listy
+
+lista = [0,1,2,3]
+lista[0]  -> element pierwszy
+
+lista[-1] ->ostatni element listy
+
+len(lista) -> ilość elementów listy
