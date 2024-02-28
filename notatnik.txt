@@ -4,6 +4,7 @@
 - zbiór
 - słowniki
 
+#komentarz
 '''      ''' nieuzywany obszar
 1. lista
 lista = []
