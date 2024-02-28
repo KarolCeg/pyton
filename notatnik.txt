@@ -100,4 +100,17 @@ S['A'] wywoływanie elementu za pomoca klucza
 S['D'] = "Darek ma kota" // dodawanie czegos
 del S['D'] // usuwanie 
 
+S.keys() //print(y.keys())
+S.values()
+[i for i in S.keys()]
+[i for i in S.values()]
 
+
+[() for klucz, wartosc in S.items()]
+[(klucz , wartosc) for klucz , wartosc in S.items()]
+
+
+macierz zrobiona słownikiem
+x = [[0 if  i!=j else 1 for i in range(3)]for j in range(3)]
+y = {(i,j) : x[i][j] for i in range(3) for j in range(3)}
+print (y)
