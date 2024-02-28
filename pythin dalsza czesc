@@ -1,2 +1,10 @@
+1. funkcja if (ważny jest :)
 if __name__ == "__main__":
     pass
+
+pass nic nie robi
+
+ wcięcia decydują o zagnieżdżaniu fukcji (tab , spacja , 2 tabulatory) (warunkiem jest spojność tego w programie)
+
+print ("coś" + str(100) + "zlotych")
+str() do dodawaniu do tekstu
