@@ -1,3 +1,5 @@
+tkinter biblioteka czy coś
+
 1. funkcja if (ważny jest :)
 if __name__ == "__main__":
     pass
@@ -8,3 +10,25 @@ pass nic nie robi
 
 print ("coś" + str(100) + "zlotych")
 str() do dodawaniu do tekstu
+
+print ("coś {0:f} lat".format(100))
+f => float
+print ("coś {0:04d} lat".format(100))
+
+2. funckje i składnia ich
+
+def kwadrat(n):
+    return n * n
+
+wywoływanie
+
+print (kwadrat(2))
+
+silnia
+
+def silnia(n):
+    if( n > 0):
+        return n * silnia(n-1)
+    else: 
+        return 1
+print (silnia(3))
