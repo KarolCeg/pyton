@@ -3,6 +3,8 @@
 - krotka
 - zbiór
 - słowniki
+
+'''      ''' nieuzywany obszar
 1. lista
 lista = []
 lista = list()
@@ -80,3 +82,22 @@ lub
 [txt.count(i) for i in set(txt)]
 lub
 [(i,txt.count(i)) for i in set(txt)]
+---------------------------- 28.02
+[0 if i != 5 else 1 for i in range(10)]
+
+print([[0 if  i!=j else 1 for i in range(3)]for j in range(3)])
+
+macierz
+x = [[0 if  i!=j else 1 for i in range(3)]for j in range(3)]
+y = [(i,j, x[i][j]) for i in range(3) for j in range(3)]
+print (y)
+
+1. słownik {kluczk : wartość}
+klucz jest unikalny
+S = { 'A' : "Ala ma kota" , 'B' : "Bronek ma kota" , 'C' : "czarek ma kota"}
+S['A'] wywoływanie elementu za pomoca klucza
+
+S['D'] = "Darek ma kota" // dodawanie czegos
+del S['D'] // usuwanie 
+
+
