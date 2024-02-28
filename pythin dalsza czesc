@@ -1,5 +1,7 @@
 tkinter biblioteka czy coś
 
+# komentarz
+
 1. funkcja if (ważny jest :)
 if __name__ == "__main__":
     pass
