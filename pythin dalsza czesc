@@ -1,6 +1,6 @@
-tkinter biblioteka czy coś
+tkinter biblioteka czy coś tworzy odzielne pole czy coś takiego
 
-# komentarz
+
 
 1. funkcja if (ważny jest :)
 if __name__ == "__main__":
@@ -34,3 +34,10 @@ def silnia(n):
     else: 
         return 1
 print (silnia(3))
+
+3. pyton może zwracać kilka wyników  (tzw krotkę)
+def dwa():
+    return 1,2
+
+4. słownik spelnia rolę struktur w pythonie
+lub klasa
