@@ -22,18 +22,21 @@ print(literki(linijka))
 ---------------- z pliku zczytanie i liczenie
 def literki(nazwa):
     s =dict()
-    linijka = f.readline()
+    linijka = nazwa.readline()
     while linijka:
         for znak in linijka:
             s[znak] = 0
         for znak in linijka:
             if(znak in s.keys()):
                 s[znak] +=1
-        linijka = f.readline()
+        linijka = nazwa.readline()
     return s
 f = open("tekst.txt", "r")
 print(literki(f))
 f.close()
+
+
+
 
 
 
