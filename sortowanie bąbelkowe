@@ -7,6 +7,7 @@ def babelki(n):
                 pom2 = n[j+1]
                 n[j] = pom2
                 n[j+1] = pom1  
+#n[j], n[j+1] = n[j+1], n[j] specyficzna forma dla pythona
      return n
 
 print(babelki([9, -2 , 6 , 8 , 1 , -8]))
