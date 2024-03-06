@@ -1,7 +1,6 @@
 def babelki(n):
-     l = len(n)
-     for i in range(l): 
-        for j in range (l-i -1):
+     for i in range(len(n)): 
+        for j in range (len(n)-i -1):
             if(n[j] > n[j + 1]):
                 pom1 = n[j]
                 pom2 = n[j+1]
