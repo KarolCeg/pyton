@@ -1,1 +1,25 @@
+1. poczatki
+
+class samochod:
+
+    NumerySeryjne = 1 # zmienna wspólna dla wszystkich obiektów w klasie
+
+    def __init__(self , NumerRejestracyjny): #konstruktor
+        self.MojNumerSeryjny = samochod.NumerySeryjne 
+        samochod.NumerySeryjne += 1
+        self.MojNumerRejestracyjny = NumerRejestracyjny
+        
+
+    def Uruchomsilnik(self): #self uzywamy przy klasach zeby funckja miala dostep do obiektu
+        print("silnik samohcodu o numerze seryjnym {0} i numerze rejestracyjnym {1}  został uruchomiony".format(self.MojNumerSeryjny, self.MojNumerRejestracyjny)) 
+
+if __name__ == "__main__":
+
+    s = samochod("wy2")  # tworzymy obiekt klasy samochod
+    s.Uruchomsilnik()
+    s2 = samochod("wx3")
+    s2.Uruchomsilnik()
+
+2. abstrakcja
+
 
