@@ -71,4 +71,6 @@ if __name__ == "__main__":
     p = prostokat(2,2)
     print("prostokat ma obowód - {0}, pole - {1}" .format(p.obwod() , p.pole() ))
 
-3.
+3. przeciazanie
+
+ostatecznie jednak nie robilismy
