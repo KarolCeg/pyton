@@ -1,3 +1,6 @@
+super słuzy do odnoszenie się do klas z ktorych sie dziedziczy czy cos takiego
+return super().kimjestem() np
+
 1. poczatki
 
 class samochod:
