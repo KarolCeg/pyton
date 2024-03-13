@@ -22,4 +22,50 @@ if __name__ == "__main__":
 
 2. abstrakcja
 
+from abc import ABC, abstractmethod # wymagane do klasy abstrakcyjnej
 
+class figura(ABC):  # to tez klasa abstrakcyjna
+    
+    @abstractmethod
+    def obwod(self):
+        pass
+
+    @abstractmethod
+    def pole(self):
+        pass
+
+
+class okrag(figura):
+
+    def __init__(self, promien):
+        self.promien = promien
+
+    def obwod(self):
+        return 2 * 3.1415 *self.promien
+
+    def pole(self):
+        return 3.1415 * self.promien *2
+
+class prostokat(figura):
+
+    def __init__(self, dlugosc, wysokosc):
+        self.dlugosc = dlugosc
+        self.wysokosc = wysokosc
+
+    def obwod(self):
+        return self.dlugosc * 2 + self.wysokosc * 2
+
+    def pole(self):
+        return self.dlugosc* self.wysokosc 
+
+if __name__ == "__main__":
+
+   # f = figura()
+
+    o = okrag(1)
+    print("okrag ma obowód {0}, pole - {1}" .format(o.obwod() , o.pole() ))
+
+    p = prostokat(2,2)
+    print("prostokat ma obowód - {0}, pole - {1}" .format(p.obwod() , p.pole() ))
+
+3.
