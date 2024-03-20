@@ -23,19 +23,19 @@ jakas funkcja pop
 class graf():
 
     def __init__(self , wierzcholki , krawedzie):
-        #self.wierzcholki = list()
+        self.wierzcholki = list()
         self.wierzcholki = set(wierzcholki)
-        
+        for i in krawedzie:
+            for x in i:
+                if(x not in self.wierzcholki):
+                    raise Exception("Nie da sie utworzyc takiego grafu")
 
     def test(self):
-        #print("cos {0}" .format(self.wierzcholki))
-        print("dziala")
-"""
-        if warunek:
-            raise Exception("Nie da sie utworzyc takiego grafu")
-"""
+        print("cos {0}" .format(self.wierzcholki))
+        
 
-if __name__ == "__name__":
+
+if __name__ == "__main__":
 
     g = graf(['a' , 'b' , 'c'] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'd')])
     g.test()
