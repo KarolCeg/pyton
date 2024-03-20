@@ -1,0 +1,41 @@
+"""
+wierzcholek 
+krawiedz -> 2 wierzchłoki połaczone
+
+lista nazwy wierzcholkow
+lista krawedzi(lista krotek)
+
+konstruktor zbierajacy wierzcholki i krawedzie
+
+graf nieskierowany
+
+lista krotek dwu elementowych
+
+nie może byc wierzchołkow o tych samych nazwach
+
+krawedzie musza miec w nazwach tylko wierzchloki
+krotka opisujaca krawedz musi sie poslugiwac jedna z dozwolonych wierzcholkow
+
+uzyc zbiorow zeby wierzcholki sie nie powtarzaly
+
+jakas funkcja pop
+"""
+class graf():
+
+    def __init__(self , wierzcholki , krawedzie):
+        #self.wierzcholki = list()
+        self.wierzcholki = set(wierzcholki)
+        
+
+    def test(self):
+        #print("cos {0}" .format(self.wierzcholki))
+        print("dziala")
+"""
+        if warunek:
+            raise Exception("Nie da sie utworzyc takiego grafu")
+"""
+
+if __name__ == "__name__":
+
+    g = graf(['a' , 'b' , 'c'] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'd')])
+    g.test()
