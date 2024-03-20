@@ -27,6 +27,7 @@ class graf():
         self.wierzcholki = list()
         self.wierzcholki = set(wierzcholki)
         self.krawedzie = krawedzie
+        self.sasiedzi = []
         if(len(wierzcholki) != len(set(wierzcholki))):
             raise Exception("Nie da sie utworzyc takiego grafu(wierzcholki)")
         for krawedz in krawedzie:
@@ -40,13 +41,12 @@ class graf():
                     print("polaczenia dla {0} : {1} " .format(wierzcholek,krawedz))
     
     def polaczenia(self,wierzcholek):
-        sasiedzi = []
         for krawedz in self.krawedzie:
             if(wierzcholek == krawedz[0]):
-                sasiedzi.append(krawedz[1])
+                self.sasiedzi.append(krawedz[1])
             if(wierzcholek == krawedz[1]):
-                sasiedzi.append(krawedz[0])
-        print(sasiedzi)
+                self.sasiedzi.append(krawedz[0])
+        print(self.sasiedzi)
 if __name__ == "__main__":
 
     g = graf(['a' , 'b' , 'c'  ] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'b')])
