@@ -34,21 +34,21 @@ class graf():
             if not krawedz[0] in wierzcholki or not krawedz[1] in wierzcholki:
                 raise Exception("Nie da sie utworzyc takiego grafu(krawedzie)") 
 
-    def polaczenia_krawedz(self,wierzcholek):
+    def polaczenia_krawedz(self,wierzcholek): # zwraca krawedz ktora zawiera wierzcholek
         for krawedz in self.krawedzie:
             for x in range (2):
                 if(wierzcholek == krawedz[x]):
                     print("polaczenia dla {0} : {1} " .format(wierzcholek,krawedz))
     
-    def polaczenia(self,wierzcholek):
+    def polaczenia(self,wierzcholek): #co jest połaczone z czym
         for krawedz in self.krawedzie:
             if(wierzcholek == krawedz[0]):
                 self.sasiedzi.append(krawedz[1])
             if(wierzcholek == krawedz[1]):
                 self.sasiedzi.append(krawedz[0])
-        print(self.sasiedzi)
+        print(self.sasiedzi) #return self.sasiedzi
+       
 
-    
     def drzewo(self): #sprawdza czy graf jest drzewem   #szukamy drzewa ktore nie ma petli
         wierzcholki = [set([i]) for i in self.wierzcholki]
         for krawedz in self.krawedzie:
@@ -61,12 +61,21 @@ class graf():
                     if krawedz[1] in zbior:
                         zbior_wierzcholka_B = zbior
                 if zbior_wierzcholka_A == zbior_wierzcholka_B:
-                    return False
+                    return False # to nie jest drzewo
+                #tu nastepuje łaczenie zbiorow
+                else: 
+                    zbior_wierzcholka_A.union(zbior_wierzcholka_B)
+                    wierzcholki.remowe(zbior_wierzcholka_B)
             return True
-                #trzeba jeszcze  dorobic polecenie łaczące zbiory
+            
+
+
+
 
 
 if __name__ == "__main__":
 
-    g = graf(['a' , 'b' , 'c'  ] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'b')])
-    g.polaczenia('a')
+    g = graf(['a' , 'b' , 'c'  ] , [('a' , 'b'), ('b' , 'c'), ('c' , 'a')])
+    #g.polaczenia('a')
+    if g.drzewo() == False:
+        print("tak")
