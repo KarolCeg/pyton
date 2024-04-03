@@ -50,7 +50,7 @@ class graf():
        
 
     def drzewo(self): #sprawdza czy graf jest drzewem   #szukamy drzewa ktore nie ma petli
-        wierzcholki = [set([i]) for i in self.wierzcholki]
+        wierzcholki = [set([i]) for i in self.wierzcholki] # tworzy listę pojedynczych zbiorow
         for krawedz in self.krawedzie:
             zbior_wierzcholka_A = None
             zbior_wierzcholka_B = None
@@ -72,7 +72,9 @@ class graf():
 
 if __name__ == "__main__":
 
-    g = graf(['a' , 'b' , 'c','d'  ] , [('a' , 'b'), ('b' , 'c'), ('c' , 'd')])
+    g = graf(['a' , 'b' , 'c','d'  ] , [('a' , 'b'), ('b' , 'c'), ('c' , 'a')])
     #g.polaczenia('a')
     if g.drzewo() == True:
-        print("tak")
+        print("jest")
+    else:
+        print("nie jest")
