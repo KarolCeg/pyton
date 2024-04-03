@@ -1,53 +1,117 @@
-"""
-wierzcholek 
-krawiedz -> 2 wierzchłoki połaczone
 
-lista nazwy wierzcholkow
-lista krawedzi(lista krotek)
+- lista 
+- krotka
+- zbiór
+- słowniki
 
-konstruktor zbierajacy wierzcholki i krawedzie
+#komentarz
+'''      ''' nieuzywany obszar
+1. lista
+lista = []
+lista = list()
+puste listy
 
-graf nieskierowany
+lista = [0,1,2,3]
+lista[0]  -> element pierwszy
 
-lista krotek dwu elementowych
+lista[-1] ->ostatni element listy
 
-nie może byc wierzchołkow o tych samych nazwach
+len(lista) -> ilość elementów listy
 
-krawedzie musza miec w nazwach tylko wierzchloki
-krotka opisujaca krawedz musi sie poslugiwac jedna z dozwolonych wierzcholkow
+lista[2:4] -> pokazuje fragment listy od 2 do 3 elementów (4 kończy się nawiasem otwartym a dwójka zaczyna zamkniętym
+lista[2:] -> do końca
+lista[:3] -> do 3 elementu 
 
-uzyc zbiorow zeby wierzcholki sie nie powtarzaly
+L = [i for i in range(1000)]
 
--------------
-sasiedzi danego wierzcholka
-"""
-class graf():
+L = [i**2 for i in range(10)]   -> i do kwadratu
 
-    def __init__(self , wierzcholki , krawedzie):
-        self.wierzcholki = list()
-        self.wierzcholki = set(wierzcholki)
-        self.krawedzie = krawedzie
-        self.sasiedzi = []
-        if(len(wierzcholki) != len(set(wierzcholki))):
-            raise Exception("Nie da sie utworzyc takiego grafu(wierzcholki)")
-        for krawedz in krawedzie:
-            if not krawedz[0] in wierzcholki or not krawedz[1] in wierzcholki:
-                raise Exception("Nie da sie utworzyc takiego grafu(krawedzie)") 
+L = [i*j for i in range(10) for j in range(10)]
 
-    def polaczenia_krawedz(self,wierzcholek):
-        for krawedz in self.krawedzie:
-            for x in range (2):
-                if(wierzcholek == krawedz[x]):
-                    print("polaczenia dla {0} : {1} " .format(wierzcholek,krawedz))
-    
-    def polaczenia(self,wierzcholek):
-        for krawedz in self.krawedzie:
-            if(wierzcholek == krawedz[0]):
-                self.sasiedzi.append(krawedz[1])
-            if(wierzcholek == krawedz[1]):
-                self.sasiedzi.append(krawedz[0])
-        print(self.sasiedzi)
-if __name__ == "__main__":
+[i*i+1 for i in range(10)]
 
-    g = graf(['a' , 'b' , 'c'  ] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'b')])
-    g.polaczenia('a')
+[i*i+1 for i in range(10) if i %2 == 0]
+
+[i*i+1 for i in range(0,10,2)] (od:do:przyrost)
+
+
+L[8:2:-2]
+L[::-1]
+
+L.append(90) ->dodaje element do list
+L.pop(-1) ->usuwa ostatni element z listy
+L.index(6) wyszukuje danego elementu -> podaje jej index
+L[L.index(6)]
+
+L[6] = 7656 pod indexem 6 mamy 7656
+L[1] = 'ala ma kota'
+L[2] = list()
+
+== -> porównanie
+[0,1] == []
+
+2. kropka podobnie co lista
+k = (1,2)
+
+ k = tuple([i for i in range(10)])
+
+3.zbiory
+set() lub {}
+
+>>> A = {0 ,1,2}
+>>> B={2,3,4}
+
+A|B -> A suma B 
+A&B -> iloczyn
+A-B -> różnica
+A^B -> różnica symetryczna == (A|B) - (A&B) - > to samo
+C = set("ala ma kota") - > literki nie będą się powtarzać
+set("ala ma kota") == set("ala ma koat") -> ten sam zbiór
+set("ala ma kota") == set("ala ma kota ala ma kota") -> to samo
+
+4. tabliczka mnnożenia
+L = [[i*j for i in range(10)] for j in range(10)]
+
+5. liczenie ile razy wystąpi
+txt = "ala ma kota , ala ma kota"
+//
+set(txt)
+len(set(txt))
+//
+ x = txt.count("a")
+lub
+[txt.count(i) for i in set(txt)]
+lub
+[(i,txt.count(i)) for i in set(txt)]
+---------------------------- 28.02
+[0 if i != 5 else 1 for i in range(10)]
+
+print([[0 if  i!=j else 1 for i in range(3)]for j in range(3)])
+
+macierz
+x = [[0 if  i!=j else 1 for i in range(3)]for j in range(3)]
+y = [(i,j, x[i][j]) for i in range(3) for j in range(3)]
+print (y)
+
+1. słownik {kluczk : wartość}
+klucz jest unikalny
+S = { 'A' : "Ala ma kota" , 'B' : "Bronek ma kota" , 'C' : "czarek ma kota"}
+S['A'] wywoływanie elementu za pomoca klucza
+
+S['D'] = "Darek ma kota" // dodawanie czegos
+del S['D'] // usuwanie 
+
+S.keys() //print(y.keys())
+S.values()
+[i for i in S.keys()]
+[i for i in S.values()]
+
+
+[() for klucz, wartosc in S.items()]
+[(klucz , wartosc) for klucz , wartosc in S.items()]
+
+
+macierz zrobiona słownikiem
+x = [[0 if  i!=j else 1 for i in range(3)]for j in range(3)]
+y = {(i,j) : x[i][j] for i in range(3) for j in range(3)}
+print (y)
