@@ -64,7 +64,7 @@ class graf():
                     return False # to nie jest drzewo
                 #tu nastepuje łaczenie zbiorow
                 else: 
-                    zbior_wierzcholka_A.union(zbior_wierzcholka_B)
+                    zbior_wierzcholka_A.update(zbior_wierzcholka_B)
                     wierzcholki.remowe(zbior_wierzcholka_B)
             return True
             
