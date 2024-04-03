@@ -61,10 +61,9 @@ class graf():
                     zbior_wierzcholka_B = zbior
             if zbior_wierzcholka_A == zbior_wierzcholka_B:
                 return False # to nie jest drzewo
-                #tu nastepuje łaczenie zbiorow
-            else: 
+            else: #tu nastepuje łaczenie zbiorow
                 zbior_wierzcholka_A.update(zbior_wierzcholka_B)
-                wierzcholki.remowe(zbior_wierzcholka_B)
+                wierzcholki.remove(zbior_wierzcholka_B)
         return True
 
 
@@ -75,5 +74,5 @@ if __name__ == "__main__":
 
     g = graf(['a' , 'b' , 'c','d'  ] , [('a' , 'b'), ('b' , 'c'), ('c' , 'd')])
     #g.polaczenia('a')
-    if g.drzewo() == False:
+    if g.drzewo() == True:
         print("tak")
