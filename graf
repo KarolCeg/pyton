@@ -47,6 +47,25 @@ class graf():
             if(wierzcholek == krawedz[1]):
                 self.sasiedzi.append(krawedz[0])
         print(self.sasiedzi)
+
+    
+    def drzewo(self): #sprawdza czy graf jest drzewem   #szukamy drzewa ktore nie ma petli
+        wierzcholki = [set([i]) for i in self.wierzcholki]
+        for krawedz in self.krawedzie:
+            zbior_wierzcholka_A = None
+            zbior_wierzcholka_B = None
+            for zbior in wierzcholki:
+                if krawedz[0] in zbior:
+                    if krawedz[0] in zbior:
+                        zbior_wierzcholka_A = zbior
+                    if krawedz[1] in zbior:
+                        zbior_wierzcholka_B = zbior
+                if zbior_wierzcholka_A == zbior_wierzcholka_B:
+                    return False
+            return True
+                #trzeba jeszcze  dorobic polecenie łaczące zbiory
+
+
 if __name__ == "__main__":
 
     g = graf(['a' , 'b' , 'c'  ] , [('a' , 'b'), ('b' , 'c'), ('a' , 'c'), ('a' , 'b')])
