@@ -40,7 +40,7 @@ class graf():
                 if(wierzcholek == krawedz[x]):
                     print("polaczenia dla {0} : {1} " .format(wierzcholek,krawedz))
     
-    def polaczenia(self,wierzcholek): #co jest połaczone z czym
+    def polaczenia(self,wierzcholek): # zwraca same wierzcholki
         for krawedz in self.krawedzie:
             if(wierzcholek == krawedz[0]):
                 self.sasiedzi.append(krawedz[1])
