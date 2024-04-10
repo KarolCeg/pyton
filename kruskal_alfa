@@ -1,0 +1,90 @@
+po podaniu krawedzi
+zwroci klase grafu ktory tworzy drzewo rozpinajace o najmniejszych wartosciach krawedzi
+class Graf():
+
+    def __init__(self, wierzcholki, krawedzie):
+        self.wierzcholki = set(wierzcholki)
+        self.krawedzie = krawedzie
+        self.sasiedzi = []
+            
+    def polaczenia_krawedz(self, wierzcholek):
+        for krawedz in self.krawedzie:
+            for x in range(2):
+                if wierzcholek == krawedz[x]:
+                    print("polaczenia dla {0}: {1}".format(wierzcholek, krawedz))
+
+    def polaczenia(self, wierzcholek):
+        for krawedz in self.krawedzie:
+            if wierzcholek == krawedz[0]:
+                self.sasiedzi.append(krawedz[1])
+            if wierzcholek == krawedz[1]:
+                self.sasiedzi.append(krawedz[0])
+        print(self.sasiedzi)
+
+    def drzewo(self):
+        wierzcholki = [set([i]) for i in self.wierzcholki]
+        for krawedz in self.krawedzie:
+            zbior_wierzcholka_A = None
+            zbior_wierzcholka_B = None
+            for zbior in wierzcholki:
+                if krawedz[0] in zbior:
+                    zbior_wierzcholka_A = zbior
+                if krawedz[1] in zbior:
+                    zbior_wierzcholka_B = zbior
+            if zbior_wierzcholka_A == zbior_wierzcholka_B:
+                return False
+            else:
+                zbior_wierzcholka_A.update(zbior_wierzcholka_B)
+                wierzcholki.remove(zbior_wierzcholka_B)
+        return True
+
+
+def utw_zbior(elem):
+    return {elem}
+
+
+def Sort(A):
+    kraw = []
+    for j in range(2, len(A)):
+        klucz = A[j]
+        i = j - 1
+        while i >= 0 and A[i][1] > klucz[1]:
+            A[i+1] = A[i]
+            i -= 1
+        A[i+1] = klucz
+    
+    for elem in A:
+        kraw.append(elem[0])
+    return kraw
+
+
+def znaj_elem(a, A):
+    for elem in A:
+        if a in elem:
+            return elem
+
+
+def Kruskal(Graf, Waga):
+    A = []
+    B = []
+    for elem in Graf.wierzcholki:
+        B.append(utw_zbior(elem))  
+    Waga_sort = Sort(Waga) 
+    for i, j in Waga_sort:
+        zb_a = znaj_elem(i, B) 
+        zb_b = znaj_elem(j, B)
+        if zb_a != zb_b:
+            A.append((i, j))
+            B.append(zb_a.union(zb_b))
+            B.remove(zb_b)
+            B.remove(zb_a)
+    return A
+
+
+if __name__ == "__main__":
+    G_wierzch = ["A", "B", "C", "D", "E", "F", "G", "H"]
+    G_kraw_kg =[(("A","B"), 4), (("A","C"),8), (("A","D"),11), (("B","C"),8),(("B","E"),7),(("B","F"),1),(("C","E"),2),(("C","D"),6),(("D","G"),7),(("E","G"),4),(("E","H"),2),(("E","F"),14),(("G","H"),9),(("H","F"),10) ]
+
+    graf = Graf(G_wierzch, G_kraw_kg)
+    A = Kruskal(graf, G_kraw_kg)
+    print(A)
