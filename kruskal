@@ -5,38 +5,6 @@ class Graf():
         self.krawedzie = krawedzie
         self.sasiedzi = []
             
-    def polaczenia_krawedz(self, wierzcholek): #zwraca krawedzie z tym wierzcholkiem
-        for krawedz in self.krawedzie:
-            for x in range(2):
-                if wierzcholek == krawedz[x]:
-                    print("polaczenia dla {0}: {1}".format(wierzcholek, krawedz))
-
-    def polaczenia(self, wierzcholek): #zwraca same wierzcholki
-        for krawedz in self.krawedzie:
-            if wierzcholek == krawedz[0]:
-                self.sasiedzi.append(krawedz[1])
-            if wierzcholek == krawedz[1]:
-                self.sasiedzi.append(krawedz[0])
-        print(self.sasiedzi)
-
-    def drzewo(self):
-        wierzcholki = [set([i]) for i in self.wierzcholki]
-        for krawedz in self.krawedzie:
-            zbior_wierzcholka_A = None
-            zbior_wierzcholka_B = None
-            for zbior in wierzcholki:
-                if krawedz[0] in zbior:
-                    zbior_wierzcholka_A = zbior
-                if krawedz[1] in zbior:
-                    zbior_wierzcholka_B = zbior
-            if zbior_wierzcholka_A == zbior_wierzcholka_B:
-                return False
-            else:
-                zbior_wierzcholka_A.update(zbior_wierzcholka_B)
-                wierzcholki.remove(zbior_wierzcholka_B)
-        return True
-
-
 def utw_zbior(elem):
     return {elem}
 
