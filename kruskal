@@ -5,13 +5,13 @@ class Graf():
         self.krawedzie = krawedzie
         self.sasiedzi = []
             
-    def polaczenia_krawedz(self, wierzcholek):
+    def polaczenia_krawedz(self, wierzcholek): #zwraca krawedzie z tym wierzcholkiem
         for krawedz in self.krawedzie:
             for x in range(2):
                 if wierzcholek == krawedz[x]:
                     print("polaczenia dla {0}: {1}".format(wierzcholek, krawedz))
 
-    def polaczenia(self, wierzcholek):
+    def polaczenia(self, wierzcholek): #zwraca same wierzcholki
         for krawedz in self.krawedzie:
             if wierzcholek == krawedz[0]:
                 self.sasiedzi.append(krawedz[1])
