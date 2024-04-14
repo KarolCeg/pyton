@@ -1,49 +1,60 @@
 class Graf():
 
     def __init__(self, wierzcholki, krawedzie):
-        self.wierzcholki = set(wierzcholki)
-        self.krawedzie = krawedzie
-        self.sasiedzi = []
+
+        for wierzcholek in wierzcholki:
+            if wierzcholki.count(wierzcholek)>1:
+                raise Exception("nieprawidłowe wierzchołki")
+        for krawedz in krawedzie:
+            if not krawedz[0][0] in wierzcholki or not krawedz[0][1] in wierzcholki:
+                raise Exception("nieprawidłowe krawędzie")              
+        same_krawedzie = []          
+        for krawedz in krawedzie:
+            same_krawedzie.append(krawedz[0])
+        for sama_krawedz in same_krawedzie:
+            if same_krawedzie.count(sama_krawedz)>1:
+                raise Exception("nieprawidłowe krawedzie")
             
-def utw_zbior(elem):
-    return {elem}
+        self.wierzcholki = list(wierzcholki)
+        self.krawedzie = list(krawedzie)
 
+    def Utw_zbior(self, elem):
+        return {elem}
 
-def Sort(A):
-    kraw = []
-    A.sort(key=lambda x : x[1])
-    for elem in A:
-        kraw.append(elem[0])
-    return kraw
+    def Sort(self, A):
+        kraw = []
+        A.sort(key=lambda x : x[1])
+        for elem in A:
+            kraw.append(elem[0])
+        return kraw
 
+    def Znaj_elem(self, a, A):
+        for elem in A:
+            if a in elem:
+                return elem
 
-def znaj_elem(a, A):
-    for elem in A:
-        if a in elem:
-            return elem
-
-
-def Kruskal(Graf, Waga):
-    A = []
-    B = []
-    for elem in Graf.wierzcholki:
-        B.append(utw_zbior(elem))  
-    Waga_sort = Sort(Waga) 
-    for i, j in Waga_sort:
-        zb_a = znaj_elem(i, B) 
-        zb_b = znaj_elem(j, B)
-        if zb_a != zb_b:
-            A.append((i, j))
-            B.append(zb_a.union(zb_b))
-            B.remove(zb_b)
-            B.remove(zb_a)
-    return A
+    def Kruskal(self, Graf, Waga):
+        A = []
+        B = []
+        for elem in Graf.wierzcholki:
+            B.append(self.Utw_zbior(elem))  
+        Waga_sort = self.Sort(Waga) 
+        for i, j in Waga_sort:
+            zb_a = self.Znaj_elem(i, B) 
+            zb_b = self.Znaj_elem(j, B)
+            if zb_a != zb_b:
+                A.append((i, j))
+                B.append(zb_a.union(zb_b))
+                B.remove(zb_b)
+                B.remove(zb_a)
+        return A
 
 
 if __name__ == "__main__":
-    G_wierzch = ["A", "B", "C", "D", "E", "F", "G", "H"]
-    G_kraw_kg =[(("A","B"), 4), (("A","C"),8), (("A","D"),11), (("B","C"),8),(("B","E"),7),(("B","F"),1),(("C","E"),2),(("C","D"),6),(("D","G"),7),(("E","G"),4),(("E","H"),2),(("E","F"),14),(("G","H"),9),(("H","F"),10) ]
+    g_wierzcholki = ["A", "B", "C", "D", "E", "F", "G", "H" ]
+    g_krawedzie =[(("A","B"), 4), (("A","C"),8), (("A","D"),11), (("B","C"),8),(("B","E"),7),(("B","F"),1),(("C","E"),2),(("C","D"),6),(("D","G"),7),(("E","G"),4),(("E","H"),2),(("E","F"),14),(("G","H"),9),(("H","F"),10) ]
 
-    graf = Graf(G_wierzch, G_kraw_kg)
-    A = Kruskal(graf, G_kraw_kg)
-    print(A)
+    g = Graf(g_wierzcholki, g_krawedzie)
+    print(g.Kruskal(g, g_krawedzie))
+
+    
