@@ -33,7 +33,7 @@ class Graf():
             if a in elem:
                 return elem
 
-    def Kruskal(self, Graf, Waga):
+    def Kruskal(self, Waga):
         A = []
         B = []
         for elem in self.wierzcholki:
