@@ -36,7 +36,7 @@ class Graf():
     def Kruskal(self, Graf, Waga):
         A = []
         B = []
-        for elem in Graf.wierzcholki:
+        for elem in self.wierzcholki:
             B.append(self.Utw_zbior(elem))  
         Waga_sort = self.Sort(Waga) 
         for i, j in Waga_sort:
@@ -55,6 +55,6 @@ if __name__ == "__main__":
     g_krawedzie =[(("A","B"), 4), (("A","C"),8), (("A","D"),11), (("B","C"),8),(("B","E"),7),(("B","F"),1),(("C","E"),2),(("C","D"),6),(("D","G"),7),(("E","G"),4),(("E","H"),2),(("E","F"),14),(("G","H"),9),(("H","F"),10) ]
 
     g = Graf(g_wierzcholki, g_krawedzie)
-    print(g.Kruskal(g, g_krawedzie))
+    print(g.Kruskal(g_krawedzie))
 
     
