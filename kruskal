@@ -33,6 +33,23 @@ class Graf():
             if szukane in elem:
                 return elem
 
+    def drzewo(self,krawedzie):
+        wierzcholki = [set([i]) for i in self.wierzcholki]
+        for krawedz in krawedzie:
+            zbior_wierzcholka_A = None
+            zbior_wierzcholka_B = None
+            for zbior in wierzcholki:
+                if krawedz[0] in zbior:
+                    zbior_wierzcholka_A = zbior
+                if krawedz[1] in zbior:
+                    zbior_wierzcholka_B = zbior
+            if zbior_wierzcholka_A == zbior_wierzcholka_B:
+                return False
+            else:
+                zbior_wierzcholka_A.update(zbior_wierzcholka_B)
+                wierzcholki.remove(zbior_wierzcholka_B)
+        return True
+
     def Kruskal(self, Waga):
         A = []
         B = []
@@ -42,7 +59,7 @@ class Graf():
         for i, j in Waga_sort:
             zbior_a = self.Znaj_elem(i, B) 
             zbior_b = self.Znaj_elem(j, B)
-            if zbior_a != zbior_b:
+            if (zbior_a != zbior_b) and (self.drzewo(A) == True):
                 A.append((i, j))
                 B.append(zbior_a.union(zbior_b))
                 B.remove(zbior_b)
