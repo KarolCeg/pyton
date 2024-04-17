@@ -55,16 +55,19 @@ class Graf():
         B = []
         for elem in self.wierzcholki:
             B.append(self.Utw_zbior(elem))  
-        Waga_sort = self.Sort(Waga) 
-        for i, j in Waga_sort:
+        Waga_posort = self.Sort(Waga) 
+        for i, j in Waga_posort:
             zbior_a = self.Znaj_elem(i, B) 
             zbior_b = self.Znaj_elem(j, B)
-            if (zbior_a != zbior_b) and (self.drzewo(A) == True):
+            if (zbior_a != zbior_b):
                 A.append((i, j))
                 B.append(zbior_a.union(zbior_b))
                 B.remove(zbior_b)
                 B.remove(zbior_a)
-        return A
+        if(self.drzewo(A) == True):        
+            return A
+        else:
+            raise Exception("powstały graf nie jest drzewem")
 
 
 if __name__ == "__main__":
