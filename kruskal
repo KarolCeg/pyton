@@ -21,10 +21,10 @@ class Graf():
     def Utw_zbior(self, elem):
         return {elem}
 
-    def Sort(self, A):
+    def Sort(self, krawedzie):
         kraw = []
-        A.sort(key=lambda x : x[1])
-        for elem in A:
+        krawedzie.sort(key=lambda x : x[1])
+        for elem in krawedzie:
             kraw.append(elem[0])
         return kraw
 
